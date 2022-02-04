@@ -1,11 +1,11 @@
 <h1 align="center">
   <a href="https://github.com/orangebeard-io/soapui-listener">
-    <img src="https://raw.githubusercontent.com/orangebeard-io/soapui-listener/master/.github/logo.png" alt="Orangebeard.io Cucumber Java Listener" height="200">
+    <img src="https://raw.githubusercontent.com/orangebeard-io/soapui-listener/main/.github/logo.svg" alt="Orangebeard.io SoapUI Listener" height="200">
   </a>
   <br>Orangebeard.io SoapUI Listener<br>
 </h1>
 
-<h4 align="center">Orangebeard listener for the <a href="https://cucumber.io/" target="_blank" rel="noopener">Cucumber</a> Java Behavior-Driven-Development framework.</h4>
+<h4 align="center">Orangebeard listener for <a href="https://www.soapui.org/" target="_blank" rel="noopener">SoapUI</a> </h4>
 
 <p align="center">
   <a href="https://repo.maven.apache.org/maven2/io/orangebeard/soapui-listener/">
@@ -26,12 +26,13 @@
 
  - Obtain the jar-with-dependencies from the releases page and put it in your `SOAPUI/bin/ext` directory
  - Put orangebeard-soapui-listeners.xml in your `SOAPUI/bin/listeners` directory
- - Add the following custom properties to the project you wish to report:
+ - Add the following custom properties to the project you wish to report (save the properties to a .properties file and import them in soapUI, or set them manually):
 ```properties
 orangebeard.endpoint=https://myhost.orangebeard.app
 orangebeard.accessToken=my-access-token
 orangebeard.project=my-orangebeard-project
 orangebeard.testset=test-set-name
 ```
+
 
 Now run your test and get the results in Orangebeard!
