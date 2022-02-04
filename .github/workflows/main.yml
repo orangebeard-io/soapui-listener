@@ -51,7 +51,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           exclude_types: other,doc,chore
       - name: Create Release
-        id: createRelease
+        id: create-release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,7 +67,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
           asset_path: ./target/orangebeard-soapui-plugin-${{ steps.get-version.outputs.version }}-jar-with-dependencies.jar
           asset_name: orangebeard-soapui-plugin-${{ steps.get-version.outputs.version }}.jar
           asset_content_type: application/java-archive
@@ -77,7 +77,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
           asset_path: ./src/main/resources/orangebeard-soapui-listeners.xml
           asset_name: orangebeard-soapui-listeners.xml
           asset_content_type: application/xml
