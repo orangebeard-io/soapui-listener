@@ -6,7 +6,7 @@
     <name>SoapUI Listener Plugin</name>
     <description>A SoapUI plugin to report SoapUI tests to Orangebeard</description>
     <artifactId>orangebeard-soapui-plugin</artifactId>
-    <groupId>io.orangbeard</groupId>
+    <groupId>io.orangebeard</groupId>
 
     <developers>
         <developer>
@@ -99,23 +99,6 @@
             <build>
                 <plugins>
                     <!--no phase-->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>single</goal>
-                                </goals>
-                                <configuration>
-                                    <descriptorRefs>
-                                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                                    </descriptorRefs>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
