@@ -28,6 +28,7 @@ public class OrangebeardSoapUiSuiteRunListener extends TestSuiteRunListenerAdapt
                orangebeardTestRun = SoapUiReporter.FAKE_ORANGEBEARD;
            }
            runContext.setProperty(SINGLE_SUITE, true);
+           runContext.setProperty(ORANGEBEARD_PROPERTY, orangebeardTestRun);
        }
     }
 
