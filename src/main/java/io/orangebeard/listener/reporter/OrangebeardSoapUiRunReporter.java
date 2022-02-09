@@ -1,4 +1,4 @@
-package io.orangebeard.listeners.reporter;
+package io.orangebeard.listener.reporter;
 
 import com.eviware.soapui.model.TestPropertyHolder;
 import com.eviware.soapui.model.testsuite.TestCase;
@@ -25,13 +25,14 @@ import io.orangebeard.client.entity.TestItemType;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import static java.lang.Character.LINE_SEPARATOR;
 
-public class SoapUiRunReporter implements SoapUiReporter {
+public class OrangebeardSoapUiRunReporter implements OrangebeardReporter {
     private final OrangebeardClient orangebeardClient;
     private final OrangebeardProperties properties;
     private UUID testRunUUID;
@@ -39,7 +40,7 @@ public class SoapUiRunReporter implements SoapUiReporter {
     private final Map<String, UUID> testItemMap = new HashMap<>();
     private final Map<String, UUID> suiteMap = new HashMap<>();
 
-    public SoapUiRunReporter(TestPropertyHolder soapUiProperties) {
+    public OrangebeardSoapUiRunReporter(TestPropertyHolder soapUiProperties) {
         for (String propertyName : soapUiProperties.getPropertyNames()){
             //set soapui project properties as system properties
             System.setProperty(propertyName, soapUiProperties.getPropertyValue(propertyName));
@@ -67,7 +68,7 @@ public class SoapUiRunReporter implements SoapUiReporter {
     @Override
     public void startSuite(TestSuite suite) {
         UUID suiteUUID = orangebeardClient.startTestItem(null, new StartTestItem(testRunUUID, suite.getName(),
-                TestItemType.SUITE));
+                TestItemType.SUITE, suite.getDescription(), Collections.emptySet()));
         suiteMap.put(suite.getId(), suiteUUID);
     }
 
@@ -80,7 +81,7 @@ public class SoapUiRunReporter implements SoapUiReporter {
     @Override
     public void startTestCase(TestCase test, TestSuiteRunContext context) {
         UUID testUUID = orangebeardClient.startTestItem(suiteMap.get(test.getTestSuite().getId()),
-                new StartTestItem(testRunUUID, test.getName(), TestItemType.TEST));
+                new StartTestItem(testRunUUID, test.getName(), TestItemType.TEST, test.getDescription(), Collections.emptySet()));
         testItemMap.put(test.getId(), testUUID);
     }
 

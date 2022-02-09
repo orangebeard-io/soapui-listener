@@ -22,7 +22,10 @@
   </a>
 </p>
 
-## usage
+## Disclaimer
+This listener is provided as-is as a proof-of-concept. Some features may be untested as long as the version number is below 1.x.x. 
+
+## Usage
 
  - Obtain the jar from the releases page and put it in your `SOAPUI/bin/ext` directory
  - Put orangebeard-soapui-listeners.xml in your `SOAPUI/bin/listeners` directory

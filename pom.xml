@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>orangebeard-soapui-plugin</artifactId>
+    <artifactId>soapui-listener</artifactId>
     <groupId>io.orangebeard</groupId>
     <version>0.0.5-SNAPSHOT</version>
 
@@ -24,6 +24,8 @@
         <java.version>1.11</java.version>
         <soapui.version>5.7.0</soapui.version>
         <orangebeard.client.version>1.2.1</orangebeard.client.version>
+        <mockito.version>4.2.0</mockito.version>
+        <assertj.version>3.21.0</assertj.version>
     </properties>
 
     <scm>
@@ -53,6 +55,25 @@
             <groupId>io.orangebeard</groupId>
             <artifactId>java-client</artifactId>
             <version>${orangebeard.client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

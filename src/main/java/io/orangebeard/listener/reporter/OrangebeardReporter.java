@@ -1,4 +1,4 @@
-package io.orangebeard.listeners.reporter;
+package io.orangebeard.listener.reporter;
 
 import com.eviware.soapui.model.testsuite.TestCase;
 import com.eviware.soapui.model.testsuite.TestCaseRunContext;
@@ -10,7 +10,7 @@ import com.eviware.soapui.model.testsuite.TestSuite;
 import com.eviware.soapui.model.testsuite.TestSuiteRunContext;
 import com.eviware.soapui.model.testsuite.TestSuiteRunner;
 
-public interface SoapUiReporter {
+public interface OrangebeardReporter {
 
     void start();
     void finish(TestRunner.Status status);
@@ -21,7 +21,7 @@ public interface SoapUiReporter {
     void startStep(TestStep step, TestCaseRunContext context);
     void finishStep(TestStepResult stepResult, TestCaseRunContext context);
 
-    SoapUiReporter FAKE_ORANGEBEARD = new SoapUiReporter() {
+    OrangebeardReporter FAKE_ORANGEBEARD = new OrangebeardReporter() {
         @Override
         public void start() {
             // intentionally left empty to prevent breaking test runs when there is an issue with orangebeard

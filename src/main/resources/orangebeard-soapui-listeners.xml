@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:soapui-listeners xmlns:tns="http://eviware.com/soapui/config">
-	<tns:listener id="OrangebeardSoapUiProjectRunListener" listenerClass="io.orangebeard.listeners.OrangebeardSoapUiProjectRunListener" listenerInterface="com.eviware.soapui.model.testsuite.ProjectRunListener"/>
-	<tns:listener id="OrangebeardSoapUiSuiteRunListener" listenerClass="io.orangebeard.listeners.OrangebeardSoapUiSuiteRunListener" listenerInterface="com.eviware.soapui.model.testsuite.TestSuiteRunListener"/>
-	<tns:listener id="OrangebeardSoapUiTestRunListener" listenerClass="io.orangebeard.listeners.OrangebeardSoapUiTestRunListener" listenerInterface="com.eviware.soapui.model.testsuite.TestRunListener"/>
+	<tns:listener id="OrangebeardSoapUiProjectRunListener" listenerClass="io.orangebeard.listener.OrangebeardSoapUiProjectRunListener" listenerInterface="com.eviware.soapui.model.testsuite.ProjectRunListener"/>
+	<tns:listener id="OrangebeardSoapUiSuiteRunListener" listenerClass="io.orangebeard.listener.OrangebeardSoapUiSuiteRunListener" listenerInterface="com.eviware.soapui.model.testsuite.TestSuiteRunListener"/>
+	<tns:listener id="OrangebeardSoapUiTestRunListener" listenerClass="io.orangebeard.listener.OrangebeardSoapUiTestRunListener" listenerInterface="com.eviware.soapui.model.testsuite.TestRunListener"/>
 </tns:soapui-listeners>

@@ -1,43 +1,43 @@
-package io.orangebeard.listeners;
+package io.orangebeard.listener;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.model.support.ProjectRunListenerAdapter;
 import com.eviware.soapui.model.testsuite.ProjectRunContext;
+import com.eviware.soapui.model.testsuite.ProjectRunListener;
 import com.eviware.soapui.model.testsuite.ProjectRunner;
 import com.eviware.soapui.model.testsuite.TestSuite;
 import com.eviware.soapui.model.testsuite.TestSuiteRunner;
-import io.orangebeard.listeners.reporter.SoapUiReporter;
-import io.orangebeard.listeners.reporter.SoapUiRunReporter;
+import io.orangebeard.listener.reporter.OrangebeardReporter;
+import io.orangebeard.listener.reporter.OrangebeardSoapUiRunReporter;
 
-public class OrangebeardSoapUiProjectRunListener extends ProjectRunListenerAdapter {
+public class OrangebeardSoapUiProjectRunListener implements ProjectRunListener {
 
     private static final String ORANGEBEARD_PROPERTY = "orangebeard";
-    SoapUiReporter orangebeardTestRun;
+    private OrangebeardReporter orangebeardReporter;
 
     @Override
     public void beforeRun(ProjectRunner projectRunner, ProjectRunContext runContext) {
         try {
-             orangebeardTestRun = new SoapUiRunReporter(runContext.getProject());
+             orangebeardReporter = new OrangebeardSoapUiRunReporter(runContext.getProject());
         } catch (Exception e) {
-            SoapUI.logError(e, e.getMessage());
-            orangebeardTestRun = SoapUiReporter.FAKE_ORANGEBEARD;
+            SoapUI.log(e.getMessage());
+            orangebeardReporter = OrangebeardReporter.FAKE_ORANGEBEARD;
         }
-        orangebeardTestRun.start();
-        runContext.setProperty(ORANGEBEARD_PROPERTY, orangebeardTestRun);
+        orangebeardReporter.start();
+        runContext.setProperty(ORANGEBEARD_PROPERTY, orangebeardReporter);
     }
 
     @Override
     public void afterRun(ProjectRunner projectRunner, ProjectRunContext runContext) {
-        orangebeardTestRun.finish(projectRunner.getStatus());
+        orangebeardReporter.finish(projectRunner.getStatus());
     }
 
     @Override
     public void beforeTestSuite(ProjectRunner projectRunner, ProjectRunContext runContext, TestSuite testRunnable) {
-        orangebeardTestRun.startSuite(testRunnable);
+        orangebeardReporter.startSuite(testRunnable);
     }
 
     @Override
     public void afterTestSuite(ProjectRunner projectRunner, ProjectRunContext runContext, TestSuiteRunner testRunner) {
-        orangebeardTestRun.finishSuite(testRunner);
+        orangebeardReporter.finishSuite(testRunner);
     }
 }

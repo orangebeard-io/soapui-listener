@@ -68,8 +68,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ./target/orangebeard-soapui-plugin-${{ steps.get-version.outputs.version }}-jar-with-dependencies.jar
-          asset_name: orangebeard-soapui-plugin-${{ steps.get-version.outputs.version }}.jar
+          asset_path: ./target/soapui-listener-${{ steps.get-version.outputs.version }}-jar-with-dependencies.jar
+          asset_name: orangebeard-soapui-listener-${{ steps.get-version.outputs.version }}.jar
           asset_content_type: application/java-archive
       - name: Upload listeners config XML
         id: upload-config-xml
