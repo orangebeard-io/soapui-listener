@@ -94,7 +94,7 @@ public class OrangebeardSoapUiRunReporter implements OrangebeardReporter {
     @Override
     public void startStep(TestStep step, TestCaseRunContext context) {
         UUID testUUID = orangebeardClient.startTestItem(testItemMap.get(step.getTestCase().getId()),
-                new StartTestItem(testRunUUID, step.getName(), TestItemType.STEP));
+                new StartTestItem(testRunUUID, step.getName(), TestItemType.STEP, false));
         testItemMap.put(step.getId(), testUUID);
     }
 
